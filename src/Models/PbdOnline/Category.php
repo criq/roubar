@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Scraped\PbdOnline;
+namespace Roubar\Models\PbdOnline;
 
 class Category extends \Katu\Model {
 

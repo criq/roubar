@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Scrapers;
+namespace Roubar\Controllers;
 
 class KalorickeTabulky2 extends \Katu\Controller {
 

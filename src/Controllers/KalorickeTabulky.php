@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Scrapers;
+namespace Roubar\Controllers;
 
 use \Sexy\Sexy as SX;
 

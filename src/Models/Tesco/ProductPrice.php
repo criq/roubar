@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Scraped\Tesco;
+namespace Roubar\Models\Tesco;
 
 class ProductPrice extends \Katu\Model {
 

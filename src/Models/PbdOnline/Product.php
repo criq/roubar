@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Scraped\PbdOnline;
+namespace Roubar\Models\PbdOnline;
 
-class Product extends \App\Models\Scraped\Item {
+class Product extends Roubar\Models\Item {
 
 	const DATABASE = 'spokojenajidelna';
 	const TABLE    = 'scraped_pbdonline_products';

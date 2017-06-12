@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Scrapers;
+namespace Roubar\Controllers;
 
 use \App\Models\Scraped\PbdOnline\Category;
 use \App\Models\Scraped\PbdOnline\Product;

@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Controllers\Scrapers;
+namespace Roubar\Controllers;
+namespace Roubar\Controllers;
 
 use \App\Models\Currency;
 use \App\Models\Scraped\Tesco\Product;

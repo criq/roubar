@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Scraped;
+namespace Roubar\Models;
 
 abstract class Item extends \Katu\Model {
 

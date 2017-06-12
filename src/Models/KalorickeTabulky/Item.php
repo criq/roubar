@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Scraped\KalorickeTabulky;
+namespace Roubar\Models\KalorickeTabulky;
 
-class Item extends \App\Models\Scraped\Item {
+class Item extends Roubar\Models\Item {
 
 	const DATABASE = 'spokojenajidelna';
 	const TABLE    = 'scraped_kaloricke_tabulky';
