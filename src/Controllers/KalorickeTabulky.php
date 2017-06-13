@@ -2,6 +2,7 @@
 
 namespace Roubar\Controllers;
 
+use \Roubar\Models\KalorickeTabulky\Item;
 use \Sexy\Sexy as SX;
 
 class KalorickeTabulky extends \Katu\Controller {
@@ -35,7 +36,7 @@ class KalorickeTabulky extends \Katu\Controller {
 							$dom = \Katu\Utils\DOM::crawlHtml($res);
 							$dom->filter('.vypis tbody tr h3 a')->each(function($e) {
 								try {
-									$object = \App\Models\Scraped\KalorickeTabulky\Item::make($e->attr('href'));
+									$object = Item::make($e->attr('href'));
 									$object->setName($e->html());
 									$object->save();
 								} catch (\Exception $e) {
@@ -61,10 +62,10 @@ class KalorickeTabulky extends \Katu\Controller {
 
 			\Katu\Utils\Lock::run(['scrapers', 'kalorickeTabulky', 'scrape'], 600, function() {
 
-				$items = \App\Models\Scraped\KalorickeTabulky\Item::getBy([
+				$items = Item::getBy([
 					SX::lgcOr([
-						SX::cmpIsNull(\App\Models\Scraped\KalorickeTabulky\Item::getColumn('timeScraped')),
-						SX::cmpLessThan(\App\Models\Scraped\KalorickeTabulky\Item::getColumn('timeScraped'), (new \Katu\Utils\DateTime('- 1 month'))->getDbDateTimeFormat()),
+						SX::cmpIsNull(Item::getColumn('timeScraped')),
+						SX::cmpLessThan(Item::getColumn('timeScraped'), (new \Katu\Utils\DateTime('- 1 month'))->getDbDateTimeFormat()),
 					]),
 				], [
 					'page' => SX::page(1, 100),
@@ -90,11 +91,11 @@ class KalorickeTabulky extends \Katu\Controller {
 
 			\Katu\Utils\Lock::run(['scrapers', 'kalorickeTabulky', 'import'], 600, function() {
 
-				$items = \App\Models\Scraped\KalorickeTabulky\Item::getBy([
-					SX::cmpIsNotNull(\App\Models\Scraped\KalorickeTabulky\Item::getColumn('timeScraped')),
+				$items = Item::getBy([
+					SX::cmpIsNotNull(Item::getColumn('timeScraped')),
 					SX::lgcOr([
-						SX::cmpIsNull(\App\Models\Scraped\KalorickeTabulky\Item::getColumn('timeImported')),
-						SX::cmpLessThan(\App\Models\Scraped\KalorickeTabulky\Item::getColumn('timeImported'), (new \Katu\Utils\DateTime('- 1 month'))->getDbDateTimeFormat()),
+						SX::cmpIsNull(Item::getColumn('timeImported')),
+						SX::cmpLessThan(Item::getColumn('timeImported'), (new \Katu\Utils\DateTime('- 1 month'))->getDbDateTimeFormat()),
 					]),
 				], [
 					'page' => SX::page(1, 100),
